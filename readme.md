@@ -21,7 +21,7 @@ There are two basic files of a class:
 
 Typically the clients possess the interface and the programmers both the interface and of course the implementation. With PIMPL the programmers can freely make changes to the .cpp files without requiring our clients to recompile (since headers are not compilable files - they are included to implementation .cpp files).
 
-**<u>Design</u>**</br>:
+**<u>Design</u>**:</br>
 
 - interface functions implemented in the .cpp file except the public .getPimpl member which can be defined in the header
 - implementation class "Impl" is declared and defined in the .cpp file. Just forward declare it inside the header file to declare the class Impl*/std::unique_ptr<class Impl>
