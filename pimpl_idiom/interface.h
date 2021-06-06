@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 
+
 // the interface class
 class Agent
 {
@@ -24,7 +25,9 @@ public:
 	std::unique_ptr<struct Impl>&& getImplementation() noexcept
 	{
 		if ( !m_pimpl )
+		{
 			return std::unique_ptr<struct Impl>{};
+		}
 		// returns the ownership of the resource exclusively - not the resource itself
 		return std::move( m_pimpl );
 	}

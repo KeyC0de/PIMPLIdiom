@@ -7,21 +7,25 @@ struct Agent::Impl
 {
 	std::string m_name;
 	int m_id;
+
 	Impl( const std::string& name, int id )
 		:
 		m_name{name},
 		m_id{id}
 	{}
+
 	Impl( const Impl& rhs )
 	{
 		Impl temp{rhs};
 		std::swap( m_name, temp.m_name );
 		std::swap( m_id, temp.m_id );
 	}
+
 	Impl( Impl&& rhs ) noexcept
 		: m_name{std::move( rhs.m_name )},
 		m_id{std::move( rhs.m_id )}
 	{}
+
 	Impl& operator=( Impl&& rhs ) noexcept
 	{
 		if ( this != &rhs )
