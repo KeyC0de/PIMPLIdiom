@@ -8,11 +8,14 @@ struct Agent::Impl
 	std::string m_name;
 	int m_id;
 
-	Impl( const std::string& name, int id )
+	Impl( const std::string& name,
+		int id )
 		:
 		m_name{name},
 		m_id{id}
-	{}
+	{
+
+	}
 
 	Impl( const Impl& rhs )
 	{
@@ -22,17 +25,17 @@ struct Agent::Impl
 	}
 
 	Impl( Impl&& rhs ) noexcept
-		: m_name{std::move( rhs.m_name )},
-		m_id{std::move( rhs.m_id )}
-	{}
+		:
+		m_name{std::move( rhs.m_name )},
+		m_id{rhs.m_id}
+	{
+
+	}
 
 	Impl& operator=( Impl&& rhs ) noexcept
 	{
-		if ( this != &rhs )
-		{
-			std::swap( m_name, rhs.m_name );
-			std::swap( m_id, rhs.m_id );
-		}
+		std::swap( m_name, rhs.m_name );
+		m_id = rhs.m_id;
 		return *this;
 	}
 };
@@ -52,20 +55,21 @@ std::ostream& operator<<( std::ostream& stream,
 Agent::Agent( const std::string& name,
 	int id )
 	:
-	m_pimpl{ std::make_unique<Impl>( name, id ) }
-{}
+	m_pImpl{std::make_unique<Impl>( name, id )}
+{
+
+}
 
 Agent::Agent( Agent&& rhs ) noexcept
 	:
-	m_pimpl{std::move( rhs.m_pimpl )}
-{}
+	m_pImpl{std::move( rhs.m_pImpl )}
+{
+
+}
 
 Agent& Agent::operator=( Agent&& rhs ) noexcept
 {
-	if ( this != &rhs )
-	{
-		std::swap( m_pimpl, rhs.m_pimpl );
-	}
+	std::swap( m_pImpl, rhs.m_pImpl );
 	return *this;
 }
 

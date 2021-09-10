@@ -11,9 +11,9 @@ class Agent
 	// That's all the compiler needs to know about this header file ie the size and layout of the pointer.
 	// The actual implementation may change of course but the pointer remains the same.
 	// As such we can achieve independent compilation.
-	// We only need a forward declaration of the pointer Type - which provides no size info
+	// We only need a forward declaration of the pointer Type - which provides no size info.
 	struct Impl;
-	std::unique_ptr<Impl> m_pimpl;
+	std::unique_ptr<Impl> m_pImpl;
 public:
 	explicit Agent( const std::string& name, int id );
 	~Agent() = default;
@@ -24,12 +24,12 @@ public:
 
 	std::unique_ptr<struct Impl>&& getImplementation() noexcept
 	{
-		if ( !m_pimpl )
+		if ( !m_pImpl )
 		{
-			return std::unique_ptr<struct Impl>{};
+			return nullptr;
 		}
-		// returns the ownership of the resource exclusively - not the resource itself
-		return std::move( m_pimpl );
+		// returns the ownership of the resource exclusively
+		return std::move( m_pImpl );
 	}
 
 	friend std::ostream& operator<<( std::ostream& stream, const Agent& rhs );
