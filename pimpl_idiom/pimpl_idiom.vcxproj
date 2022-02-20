@@ -121,7 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="impl_client.cpp" />
+    <ClCompile Include="implementation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="interface.h" />

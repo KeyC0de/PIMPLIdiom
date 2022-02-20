@@ -22,7 +22,7 @@ public:
 	Agent( Agent&& rhs ) noexcept;
 	Agent& operator=( Agent&& rhs ) noexcept;
 
-	std::unique_ptr<struct Impl>&& getImplementation() noexcept
+	std::unique_ptr<Impl>&& getImplementation() noexcept
 	{
 		if ( !m_pImpl )
 		{
